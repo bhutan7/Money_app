@@ -2,27 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
-        <c:if test="${errors != null}">
-            <div id="flush_error">
-            入力内容にエラーがあります。<br />
-            <c:forEach var="error" items="${errors}">
-            ・<c:out value="${error}" /><br />
-        </c:forEach>
-
-             </div>
-        </c:if>
-
-        <form method="POST" action="<c:url value='/login' />">
-            <label for="name">名前</label><br />
-            <input type="text" name="name" />
-            <br /><br />
-
-            <label for="password">パスワード</label><br />
-            <input type="password" name="password" />
-            <br /><br />
-
-            <input type="hidden" name="_token" value="${_token}" />
-            <button type="submit">ログイン</button>
-        </form>
+        <h2>日報管理システムへようこそ</h2>
     </c:param>
 </c:import>

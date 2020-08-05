@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import models.USERS;
+import models.Expenditure;
 import utils.DBUtil;
 
-public class UserValidator {
-    public static List<String> validate(USERS u, Boolean name_duplicate_check_flag,Boolean password_check_flag){
+public class ExpenditureValidator {
+    public static List<String> validate(Expenditure u, Boolean name_duplicate_check_flag,Boolean password_check_flag){
         List<String>errors = new ArrayList<String>();
 
         String name_error = _validateName(u.getName(),name_duplicate_check_flag);

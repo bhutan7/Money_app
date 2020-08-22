@@ -1,5 +1,6 @@
 package models;
 
+
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -21,14 +24,6 @@ import javax.persistence.Table;
             name = "getExpendituresCount",
             query = "SELECT COUNT(e) FROM Expenditure AS e"
             ),
-    @NamedQuery(
-            name = "checkRegisterdName",
-            query = "SELECT COUNT(e) FROM Expenditure AS e WHERE e.name = :name"
-            ),
-    @NamedQuery(
-            name = "checkLoginNameAndPassword",
-            query = "SELECT e FROM  Expenditure AS e WHERE e.name = :name AND e.password = :password"
-            )
 })
 @Entity
 public class Expenditure {
@@ -36,11 +31,9 @@ public class Expenditure {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name" , nullable = false,unique = true)
-    private String name;
-
-    @Column(name = "password", length = 64, nullable = false)
-    private String password;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable =false)
+    private Users users;
 
     @Column(name = "purchase_at", nullable = false)
     private Date purchase_at;
@@ -48,14 +41,13 @@ public class Expenditure {
     @Column(name = "category" , nullable = false)
     private Integer category;
 
+
     @Column( name = "memo", nullable = false)
     private String memo;
 
     @Column( name = "purchase_amount", nullable = false)
     private Integer purchase_amount;
 
-    @Column(name = "delete_flag", nullable = false)
-    private Integer delete_flag;
 
     public Integer getId(){
         return id;
@@ -65,20 +57,12 @@ public class Expenditure {
         this.id = id;
     }
 
-    public String getName(){
-        return name;
+    public Users getUsers(){
+        return users;
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public String getPassword(){
-        return password;
-    }
-
-    public void setPassword(String password){
-        this.password = password;
+    public void setUsers(Users  users){
+        this.users = users;
     }
 
     public Date getPurchase_at(){
@@ -113,12 +97,5 @@ public class Expenditure {
         this.purchase_amount = purchase_amount;
     }
 
-    public Integer getDelete_flag() {
-        return delete_flag;
-    }
-
-    public void setDelete_flag(Integer delete_flag) {
-        this.delete_flag = delete_flag;
-    }
 
 }

@@ -1,55 +1,30 @@
 package models.validators;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
 import models.Expenditure;
-import utils.DBUtil;
 
 public class ExpenditureValidator {
-    public static List<String> validate(Expenditure u, Boolean name_duplicate_check_flag,Boolean password_check_flag){
-        List<String>errors = new ArrayList<String>();
+    public static List<String> validate(Expenditure e) {
+        List<String> errors = new ArrayList<String>();
 
-        String name_error = _validateName(u.getName(),name_duplicate_check_flag);
-        if(!name_error.equals("")){
-            errors.add(name_error);
+        String memo_error = _validateMemo(e.getMemo());
+        if(!memo_error.equals("")) {
+            errors.add(memo_error);
         }
-        String password_error = _validatePassword(u.getPassword(),password_check_flag);
-        if(!password_error.equals("")){
-            errors.add(password_error);
-        }
-
         return errors;
     }
 
-    private static String _validatePassword(String password, Boolean password_check_flag) {
-        // TODO 自動生成されたメソッド・スタブ
-        if(password_check_flag && (password == null || password.equals(""))){
-            return "パスワードを入力してください。";
-        }
+    private static String _validateMemo(String memo) {
+        if(memo == null || memo.equals("")) {
+            return "入力してください。";
+            }
 
         return "";
-
     }
 
-    private static String _validateName(String name, Boolean name_duplicate_check_flag) {
-        // TODO 自動生成されたメソッド・スタブ
-        if(name == null || name.equals("")){
-            return "名前を入力してください。";
-        }
 
-        if(name_duplicate_check_flag){
-            EntityManager em = DBUtil.createEntityManager();
-                    long users_count = (long)em.createNamedQuery("checkRegisterdName",Long.class)
-                            .setParameter("name",name)
-                            .getSingleResult();
-                    em.close();
-                    if(users_count > 0){
-                        return "入力された名前はすでに存在しています。";
-                    }
-        }
-        return "";
-    }
 }
+

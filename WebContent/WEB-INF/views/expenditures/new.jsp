@@ -4,10 +4,10 @@
     <c:param name="content">
         <h2>支出管理ページ</h2>
 
-        <form method="POST" action="<c:url value='/reports/create' />">
+        <form method="POST" action="<c:url value='/expenditure/create' />">
             <c:import url="_form.jsp" />
         </form>
 
-        <p><a href="<c:url value='/expenditures/index' />">一覧に戻る</a></p>
+        <p><a href="<c:url value='/expenditure/index' />">一覧に戻る</a></p>
     </c:param>
 </c:import>

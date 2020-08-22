@@ -9,11 +9,12 @@
 
     </div>
 </c:if>
+
 <label for="purchase_amount">金額</label><br />
-<input type="number" name="purchase_amount" value="${expenditure.purchase_amount}" />
+<input type="number" name="purchase_amount" value="${expenditure.purchase_amount+円}" />
 <br /><br />
 
-<label for="">カテゴリー</label><br />
+<label for="category">カテゴリー</label><br />
 <select name ="category">
     <option value="0"<c:if test="${expenditure.category == 0}"> selected</c:if>>食費</option>
     <option value="1"<c:if test="${expenditure.category == 1}"> selected</c:if>>外食費</option>

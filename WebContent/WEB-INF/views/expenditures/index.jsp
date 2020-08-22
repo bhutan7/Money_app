@@ -20,19 +20,24 @@
                 <c:forEach var="expenditure" items="${expenditures}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${expenditure.purchase_at}" /></td>
-                        <td><c:out value="${expenditure.category}" /></td>
+                        <td>
+                        <c:if test="${expenditure.category == 0}"> 食費</c:if>
+                        <c:if test="${expenditure.category == 1}"> 外食費</c:if>
+                        <c:if test="${expenditure.category == 2}"> 日用品</c:if>
+                        <c:if test="${expenditure.category == 3}"> 交通費</c:if>
+                        <c:if test="${expenditure.category == 4}"> 衣服</c:if>
+                        <c:if test="${expenditure.category == 5}"> 交際費</c:if>
+                        <c:if test="${expenditure.category == 6}"> 趣味</c:if>
+                        <c:if test="${expenditure.category == 7}"> その他</c:if>
+                        </td>
                         <td><c:out value="${expenditure.memo}" /></td>
-                        <td><c:out value="${expenditure.purchase_amount}" /></td>
+                        <td><c:out value="${expenditure.purchase_amount}"/>円</td>
 
                         <td>
-                            <c:choose>
-                                <c:when test="${expenditure.delete_flag == 1}">
-                                    （削除済み）
-                                </c:when>
-                                <c:otherwise>
-                                    <a href="<c:url value='/expenditures/show?id=${expenditure.id}' />">詳細を表示</a>
-                                </c:otherwise>
-                            </c:choose>
+
+                                    <a href="<c:url value='/expenditure/show?id=${expenditure.id}' />">詳細を表示</a>
+
+
                         </td>
                     </tr>
                 </c:forEach>
@@ -52,7 +57,7 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/expenditures/new' />">支出入力画面へ</a></p>
+        <p><a href="<c:url value='/expenditure/new' />">支出入力画面へ</a></p>
 
     </c:param>
 </c:import>

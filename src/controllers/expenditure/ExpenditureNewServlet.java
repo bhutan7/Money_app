@@ -33,7 +33,6 @@ public class ExpenditureNewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         request.setAttribute("_token", request.getSession().getId());
-        request.setAttribute("expenditure", new Expenditure());
 
         Expenditure e = new Expenditure();
         e.setPurchase_at(new Date(System.currentTimeMillis()));

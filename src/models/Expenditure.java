@@ -24,6 +24,9 @@ import javax.persistence.Table;
             name = "getExpendituresCount",
             query = "SELECT COUNT(e) FROM Expenditure AS e"
             ),
+    @NamedQuery(
+            name = "getTotalExpenditure",
+            query = "SELECT SUM(e.purchase_amount) FROM Expenditure AS e ")
 })
 @Entity
 public class Expenditure {

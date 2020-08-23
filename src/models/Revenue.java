@@ -25,6 +25,10 @@ import javax.persistence.Table;
             name = "getRevenuesCount",
             query = "SELECT COUNT(r) FROM Revenue AS r"
             ),
+    @NamedQuery(
+            name = "getTotalRevenue",
+            query = "SELECT SUM(e.revenue_amount) FROM Revenue AS e")
+
 })
 @Entity
 public class Revenue {

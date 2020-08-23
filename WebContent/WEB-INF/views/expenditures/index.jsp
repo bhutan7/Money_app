@@ -57,6 +57,7 @@
                 </c:choose>
             </c:forEach>
         </div>
+        <p>支出合計${total_expenditure}円 </p>
         <p><a href="<c:url value='/expenditure/new' />">支出入力画面へ</a></p>
 
     </c:param>

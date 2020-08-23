@@ -54,6 +54,7 @@
                 </c:choose>
             </c:forEach>
         </div>
+        <p>収入合計${total_revenue}円</p>
         <p><a href="<c:url value='/revenue/new' />">収入入力画面へ</a></p>
 
     </c:param>

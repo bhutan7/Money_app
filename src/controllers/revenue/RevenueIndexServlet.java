@@ -49,11 +49,14 @@ public class RevenueIndexServlet extends HttpServlet {
 
         long revenue_count = (long)em.createNamedQuery("getRevenuesCount", Long.class)
                                      .getSingleResult();
+        long total_revenue = (long)em.createNamedQuery("getTotalRevenue", Long.class)
+                                     .getSingleResult();
 
         em.close();
 
         request.setAttribute("revenue", revenue);
         request.setAttribute("revenue_count", revenue_count);
+        request.setAttribute("total_revenue", total_revenue);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));

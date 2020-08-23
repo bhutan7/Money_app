@@ -8,5 +8,6 @@
             </div>
         </c:if>
         <h2>家計簿管理アプリへようこそ</h2>
+        <h3>現在の収支合計${total_revenue - total_expenditure} 円</h3>
     </c:param>
 </c:import>

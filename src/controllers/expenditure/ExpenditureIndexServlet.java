@@ -48,10 +48,14 @@ public class ExpenditureIndexServlet extends HttpServlet {
         long expenditures_count = (long)em.createNamedQuery("getExpendituresCount", Long.class)
                                        .getSingleResult();
 
+        long total_expenditure = (long)em.createNamedQuery("getTotalExpenditure", Long.class)
+                                         .getSingleResult();
+
         em.close();
 
         request.setAttribute("expenditures", expenditures);
         request.setAttribute("expenditures_count", expenditures_count);
+        request.setAttribute("total_expenditure", total_expenditure);
         request.setAttribute("page", page);
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
